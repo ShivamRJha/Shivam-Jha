@@ -1,0 +1,2 @@
+import { ThemeToggle } from './ThemeToggle';
+export function Nav(){const items=['Research','Projects','Publications','About','CV','Contact'];return <nav className="nav"><div className="container navin"><a className="brand" href="/">S.K. Jha</a><div className="links"><a href="/#home">Home</a>{items.map(i=><a key={i} href={`/#${i.toLowerCase()}`}>{i}</a>)}<a href="/admin">Admin</a><ThemeToggle/></div><div className="mobile"><ThemeToggle/></div></div></nav>}
