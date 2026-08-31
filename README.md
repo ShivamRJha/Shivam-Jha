@@ -1,6 +1,6 @@
-# Shivam Kumar Jha — GitHub Pages Research Portfolio
+# Shivam Kumar Jha — Research Portfolio
 
-This repository is a **static academic research portfolio** designed to be hosted directly from the `main` branch with GitHub Pages. It does not require Node.js, a build step, server-side rendering, or paid infrastructure.
+A modern academic research portfolio for PhD applications, research supervisors, collaborators, internships, and professional networking.
 
 ## Resume analysis used as source of truth
 
@@ -10,56 +10,56 @@ This repository is a **static academic research portfolio** designed to be hoste
 - **Research interests:** Scientific Machine Learning, Computational Science, Physics-Informed Neural Networks, Numerical Simulation, Mechanical Engineering
 - **Research experience:** Numerical wave propagation with Dr. Tapan K. Sengupta; Arctic lead/front analysis with Dr. Georgy Manucharyan; floe dynamics/Oceananigans work with Dr. Mukund Gupta
 - **Publication:** `Continuum perturbation field in quiescent ambience: Common foundation of flows and acoustics.` Details are intentionally marked pending until DOI/venue/link are provided.
-- **Projects:** AI radiographic weld defect classifier, digital inspection data platform, pressure vessel criticality and FFS computation, Oceananigans exploration, and other simulation/mechanical projects from the resume.
+- **Projects:** AI radiographic weld defect classifier, digital inspection data platform, pressure vessel criticality and FFS computation, Oceananigans exploration, Rayleigh-Taylor simulation, conduction/convection simulation, 12 Steps to Navier-Stokes, portable wire EDM development.
 - **Known links:** Email is available. GitHub, LinkedIn, Google Scholar, and ORCID are placeholders because they were not present in the resume.
 
-No publications, links, awards, or research claims were invented.
+No publications, links, awards, or claims were invented.
 
 ## Architecture
 
-The site is intentionally plain static HTML/CSS/JavaScript for GitHub Pages:
+This project uses **Next.js + TypeScript** with structured content in `lib/content.ts`. The site is built as a low-cost static/SSR portfolio with a lightweight admin prototype at `/admin`.
 
-- `index.html` — homepage sections for research, projects, publications, about, CV, education, experience, and contact.
-- `projects/*.html` — static project detail shells. Each page reads the matching project from `content.js`.
-- `admin.html` — static content editor helper for browser-local drafts and JSON export.
-- `content.js` — structured content source separated from UI rendering.
-- `app.js` — rendering, theme persistence, project lookup, and admin JSON export logic.
-- `styles.css` — responsive scientific visual design, dark/light mode, accessibility states, and reduced-motion support.
-- `assets/media` — images, SVGs, GIFs, MP4, WebM files.
-- `assets/cv` — replaceable CV PDF.
-- `robots.txt`, `sitemap.xml`, and `404.html` — GitHub Pages-friendly SEO/support files.
+Why this architecture:
 
-This approach is reliable, free, beginner-friendly, and compatible with **GitHub Pages from `main`** without dependency installation.
+- Fast and deployable on free/low-cost hosts such as Vercel, Netlify, or a VPS.
+- Content is separated from UI components through typed content models.
+- The admin dashboard demonstrates the intended Create → Edit → Preview → Publish workflow without requiring a paid CMS.
+- It is easy to later connect `/admin` to Supabase, Firebase, GitHub-backed CMS storage, or a headless CMS.
 
-## How to host on GitHub Pages from `main`
-
-1. Push this repository to GitHub.
-2. Open **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select branch **main** and folder **/(root)**.
-5. Save. GitHub Pages will serve `index.html` directly.
-
-## How to run locally
-
-No packages are required. Use any static server:
+## Run locally
 
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8000`.
+Open `http://localhost:3000`.
 
-## How to edit content without touching layout code
+## Build and checks
 
-All public content lives in `content.js` as structured data. The layout reads that file and renders sections automatically.
+```bash
+npm run build
+npm run lint
+```
 
-You can also open `admin.html`, edit JSON, save a browser-local draft, export JSON, and copy the exported data back into `content.js` for publication.
+## Content models
 
-Because GitHub Pages is static, browser edits are not automatically written to the repository. To publish edits, commit the updated `content.js` to `main`.
+`lib/content.ts` contains typed models for:
+
+- Profile and homepage text
+- Projects
+- Publications
+- Research interests
+- Education
+- Experience
+- Awards/leadership
+- Skills
+
+Each project supports title, slug, descriptions, category, date, status, technologies, thumbnail, galleries, videos, GitHub/paper/dataset/demo/documentation links, results, contribution, overview, motivation, and methodology.
 
 ## How to add a project
 
-Add an object to `PORTFOLIO_CONTENT.projects` in `content.js` with:
+Use `/admin` as the beginner-friendly interface concept. Until persistent storage is connected, add a project object to `projects` in `lib/content.ts` with:
 
 - `title`
 - `slug`
@@ -76,47 +76,64 @@ Add an object to `PORTFOLIO_CONTENT.projects` in `content.js` with:
 - `researchSignificance`
 - `keyResults`
 - `contribution`
-- `featured`
 - `overview`
 - `motivation`
 - `methodology`
 
-Then create a matching shell page at `projects/your-slug.html` using one of the existing project files as a template, and set `data-slug="your-slug"`.
+The project detail page is generated automatically at `/projects/[slug]`.
 
 ## How to add images
 
-1. Put image files in `assets/media`.
-2. Use paths such as `assets/media/figure.webp` in `content.js`.
-3. Prefer compressed WebP/JPG/PNG and meaningful alt text.
+Upload images to `public/media` and reference them as `/media/file-name.webp` or `/media/file-name.png` in a project's `thumbnail` or `images` array. Use descriptive `alt` text and captions.
 
-Supported: JPG, PNG, WebP, SVG, GIF.
+Supported formats: JPG, PNG, WebP, SVG, GIF.
 
 ## How to add videos
 
-For external videos, add a YouTube/Vimeo URL to a project's `links.video` field. For direct hosting, put compressed MP4/WebM files in `assets/media` and reference them in the project's `videos` array.
+For lightweight pages, prefer YouTube/Vimeo URLs in `links.video`. For direct video files, place compressed MP4/WebM files in `public/media` and add them to the `videos` array.
 
-Supported: MP4 and WebM.
+Supported formats: MP4 and WebM.
 
 ## How to add GitHub repositories
 
-Paste the repository URL into `links.github` for a project. The project detail page will show it as a resource button. Since this is a static GitHub Pages site, automatic GitHub metadata fetching should be done sparingly or prefilled manually to avoid unnecessary API calls and rate limits.
+Paste the repository URL into a project's `links.github` field. The UI displays a repository button. A future production enhancement can fetch GitHub metadata on demand and cache repository name, description, stars, and primary language, while allowing manual override.
 
 ## How to add publications
 
-Add a publication object to `PORTFOLIO_CONTENT.publications` with title, authors, venue/status, DOI, paper link, PDF link, GitHub, dataset, demo, video, and figures when available. If a detail is unknown, leave it blank or mark it pending.
+Add a publication object in `publications` with title, authors, venue/status, year, DOI, paper link, PDF link, GitHub, dataset, demo, video, and figure links when available. If information is unknown, leave it blank or mark it pending.
 
 ## How to replace CV
 
-Replace `assets/cv/Shivam-Kumar-Jha-CV-placeholder.pdf` with your final CV PDF and keep the same filename, or update `profile.cv` in `content.js` to point to the new PDF.
+Replace `public/cv/Shivam-Kumar-Jha-CV-placeholder.pdf` with the final CV PDF, or upload a new PDF through a future connected admin storage workflow and update `profile.cv`.
 
-## Authentication and admin security
+## Authentication configuration
 
-GitHub Pages is static and cannot safely enforce private server-side authentication. The included `admin.html` is a local editing helper, not a secure database-backed CMS. Do not place private data or secrets in it.
+Copy `.env.example` to `.env.local`:
 
-If you later need a truly private web admin with uploads and authentication, connect this frontend to a service such as Decap CMS with GitHub OAuth, Supabase, Firebase, or another headless CMS.
+```bash
+cp .env.example .env.local
+```
 
-## Deployment notes
+Set strong values:
 
-- Keep all file paths relative so the site works at `username.github.io/repository-name/` and custom domains.
-- Commit changes directly to `main` for GitHub Pages publication.
-- Replace placeholder social links, DOI/publication metadata, and the placeholder CV before sharing the website with professors.
+```bash
+ADMIN_USERNAME=your-admin-name
+ADMIN_PASSWORD=your-long-random-password
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
+
+For production, implement middleware or a CMS provider authentication layer before exposing editing actions. Do not commit `.env.local`.
+
+## Deployment
+
+1. Push the repository to GitHub.
+2. Import it into Vercel or Netlify.
+3. Set `NEXT_PUBLIC_SITE_URL` and admin credentials in the deployment dashboard.
+4. Run the production build command: `npm run build`.
+5. Replace placeholder social profile links and CV before sharing with professors.
+
+## Important production notes
+
+- The `/admin` page is currently a secure-design prototype and must be connected to real authentication and persistence before live editing is enabled.
+- The committed CV is a placeholder, not the original resume PDF.
+- Social links are placeholders because GitHub, LinkedIn, Google Scholar, and ORCID URLs were not provided.
