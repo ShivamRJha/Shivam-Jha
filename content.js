@@ -1,0 +1,55 @@
+window.PORTFOLIO_CONTENT = {
+  profile: {
+    name: 'Shivam Kumar Jha',
+    role: 'Senior Engineer – Inspection & Reliability, GAIL (India) Limited',
+    location: 'Sakri, Darbhanga, Bihar, India',
+    email: 'subhshivam22@gmail.com',
+    phone: '+91 7091844642',
+    tagline: 'Aspiring PhD researcher connecting mechanical engineering, scientific machine learning, numerical simulation, and industrial asset integrity.',
+    intro: 'I study physical and engineering systems through computation, simulation, and data-driven modeling. My current industrial work exposes me to inspection and reliability datasets in petrochemical assets, motivating research on AI-enabled decision support for asset integrity.',
+    cv: 'assets/cv/Shivam-Kumar-Jha-CV-placeholder.pdf',
+    links: { github: '', linkedin: '', googleScholar: '', orcid: '' },
+    about: 'My background is in mechanical engineering from IIT (ISM) Dhanbad, with research experience in numerical wave propagation, Arctic lead and floe dynamics, and industrial inspection reliability. I am focused on building a PhD trajectory around scientific ML, physics-informed modeling, numerical simulation, and trustworthy AI tools for engineering systems.'
+  },
+  researchInterests: [
+    { title: 'Scientific Machine Learning', text: 'Data-driven modeling informed by governing physics and engineering constraints.' },
+    { title: 'Physics-Informed Neural Networks', text: 'Learning frameworks that encode physical structure rather than relying only on black-box fitting.' },
+    { title: 'Computational Science', text: 'Numerical methods and simulation workflows for physical systems.' },
+    { title: 'Numerical Simulation', text: 'Finite-volume/finite-difference modeling, compact schemes, stability analysis, and solver implementation.' },
+    { title: 'Mechanical Engineering & Reliability', text: 'Inspection physics, asset integrity, pressure vessels, FFS support, and plant reliability data.' }
+  ],
+  publications: [
+    { title: 'Continuum perturbation field in quiescent ambience: Common foundation of flows and acoustics.', authors: 'Tapan K. Sengupta, Shivam Kumar Jha, et al.', venue: 'Publication details pending', status: 'Publication listed in resume; DOI/link can be added when available.', links: {} }
+  ],
+  projects: [
+    { title: 'AI-Based Radiographic Weld Defect Classifier', slug: 'ai-radiographic-weld-defect-classifier', shortDescription: 'Computer-vision exploration for classifying weld defects in radiographic inspection images.', description: 'Working on classification of porosity, cracks, lack of penetration, and no-defect cases while studying plant-site limitations.', category: 'Computer Vision for Asset Integrity', date: '2023–Present', status: 'In progress', technologies: ['Python', 'Computer vision', 'Inspection data'], thumbnail: 'assets/media/project-placeholder.svg', images: [], videos: [], links: { github: '' }, researchSignificance: 'Connects industrial inspection physics, data quality, labeling reliability, and deployable AI for plant environments.', keyResults: ['Identified practical constraints around image quality, defect labeling, acquisition, and model generalization.'], contribution: 'Project exploration and framing based on inspection and reliability exposure at GAIL.', featured: true, overview: 'Radiographic inspection creates visual evidence of weld integrity, but workflows can be manual and difficult to convert into AI-ready datasets.', motivation: 'Reliable weld defect classification can support safer and more consistent inspection decision-making when designed with plant constraints in mind.', methodology: 'Explore image classification workflows, defect taxonomies, label quality requirements, and deployment reliability considerations.' },
+    { title: 'Digital Inspection Data Platform', slug: 'digital-inspection-data-platform', shortDescription: 'Digitization of plant inspection checklists into structured datasets for analytics and reliability modeling.', description: 'Initiated checklist digitization using AppSheet and Power Apps to reduce paper-based observations.', category: 'Industrial Data Systems', date: '2023–Present', status: 'Deployed internally / evolving', technologies: ['AppSheet', 'Power Apps', 'Excel', 'Power BI'], thumbnail: 'assets/media/project-placeholder.svg', images: [], videos: [], links: {}, researchSignificance: 'Transforms manual inspection observations into structured data that can support anomaly detection and equipment health modeling.', keyResults: ['Converted manual checklist workflows toward structured digital records.'], contribution: 'Initiated and developed digital inspection workflow components.', featured: true, overview: 'Inspection organizations need structured, traceable data before advanced analytics or ML models become practical.', motivation: 'Manual and unstructured NDT/checklist data limits defect traceability and reliability analytics.', methodology: 'Design forms, checklist schemas, and dashboards around inspection planning and turnaround monitoring.' },
+    { title: 'Pressure Vessel Criticality and FFS Computation', slug: 'pressure-vessel-criticality-ffs-computation', shortDescription: 'Scripts/tools for pressure vessel criticality categorization and API 579-based General Metal Loss FFS support.', description: 'Developed computation support for approximately 1600 pressure vessels and post-inspection decision-making.', category: 'Reliability Engineering', date: '2023–Present', status: 'Applied engineering tool', technologies: ['VBA', 'Excel', 'Engineering calculations'], thumbnail: 'assets/media/project-placeholder.svg', images: [], videos: [], links: {}, researchSignificance: 'Supports consistent engineering assessment and prioritization in reliability workflows.', keyResults: ['Supported criticality categorization across approximately 1600 pressure vessels.'], contribution: 'Developed scripts/tools and calculation modules.', featured: true, overview: 'Pressure vessel inspection programs require consistent criticality and fitness-for-service calculations.', motivation: 'Structured computation reduces manual error and improves repeatability in post-inspection decisions.', methodology: 'Implemented calculation modules aligned with pressure vessel criticality and API 579 General Metal Loss support.' },
+    { title: 'Oceananigans Model Exploration', slug: 'oceananigans-model-exploration', shortDescription: 'Julia-based exploration of Oceananigans examples with forcing conditions and buoyancy gradients.', description: 'Set up and explored Oceananigans examples using Julia-based ocean modeling tools.', category: 'Computational Ocean Modeling', date: 'Research exploration', status: 'Exploratory', technologies: ['Julia', 'Oceananigans', 'Numerical simulation'], thumbnail: 'assets/media/project-placeholder.svg', images: [], videos: [], links: {}, researchSignificance: 'Supports computational study of ocean and ice-ocean dynamics.', keyResults: ['Explored forcing conditions and buoyancy-gradient examples.'], contribution: 'Set up and explored simulation examples.', featured: false, overview: 'Oceananigans enables numerical experiments for ocean flows and related physical processes.', motivation: 'Ocean modeling experience supports research in ice-ocean interaction and floe/lead dynamics.', methodology: 'Run Julia-based model examples and vary forcing and buoyancy conditions.' }
+  ],
+  education: [
+    { degree: 'B.Tech. in Mechanical Engineering', institution: 'Indian Institute of Technology (Indian School of Mines) Dhanbad', department: 'Mechanical Engineering', date: 'May 2023', location: 'Dhanbad, India', grade: 'GPA: 8.77/10', details: ['Relevant foundations: numerical methods, fluid mechanics, heat transfer, computational modeling, and mechanical systems.'] }
+  ],
+  experience: [
+    { organization: 'GAIL (India) Limited', position: 'Senior Engineer – Inspection & Reliability', date: 'July 2023 – Present', location: 'Pata Petrochemical Complex, India', highlights: ['Work with pipeline thickness records, statutory licensing data, pressure vessel inspection records, material quality records, and inspection tracking.', 'Developed digital systems and calculation modules for inspection planning, RBI support, pressure vessel criticality categorization, FFS calculations, turnaround monitoring, and checklist digitization.', 'Exploring AI/computer-vision methods for radiographic weld defect classification under plant constraints.'] },
+    { organization: 'IIT (ISM) Dhanbad, High Performance Computing Lab', position: 'Undergraduate Research with Dr. Tapan K. Sengupta', date: 'Undergraduate research', location: 'Dhanbad, India', highlights: ['Studied wave equations without assuming Stokes hypothesis in the Navier-Stokes formulation.', 'Analyzed OUCS compact scheme, Lele’s scheme, and upwind schemes for wave equations with loss.', 'Performed stability analysis using global spectral analysis and amplification factor plots.'] },
+    { organization: 'University of Washington collaboration', position: 'Remote research exploration with Dr. Georgy Manucharyan', date: 'Remote', location: 'Seattle, Washington, USA', highlights: ['Explored ocean frontal instability of lead-generated fronts in the Arctic.', 'Analyzed surface temperature fields, vorticity, heat flux, average temperature, and seasonal patterns.'] },
+    { organization: 'TU Delft collaboration', position: 'Remote research exploration with Dr. Mukund Gupta', date: 'Remote', location: 'Delft, Netherlands', highlights: ['Modeled floe behavior and floe interaction dynamics.', 'Implemented and tested RK2/RK4 time-stepping methods and supported Oceananigans integration.'] }
+  ],
+  skills: [
+    { group: 'Programming', items: ['Python', 'Fortran', 'C++', 'C', 'Julia', 'MATLAB', 'VBA'] },
+    { group: 'Scientific Computing', items: ['FVM', 'FDM', 'Compact schemes', 'Fourier analysis', 'Global spectral analysis', 'HPC', 'MPI'] },
+    { group: 'AI/Data', items: ['Machine learning basics', 'Computer vision exploration'] },
+    { group: 'Engineering Tools', items: ['Oceananigans', 'Tecplot', 'AutoCAD'] },
+    { group: 'Industrial Digital Tools', items: ['MS Access', 'Excel', 'Power BI', 'Power Apps', 'AppSheet', 'SAP exposure'] },
+    { group: 'Documentation', items: ['LaTeX', 'Microsoft Word'] }
+  ],
+  awards: [
+    'International Glaciological Society – Online Workshop on Ice-Ocean Interactions: presented a short talk on exploring floes and leads.',
+    'Hackfest 2021 – IIT (ISM) Dhanbad: ranked 18th out of 120 teams.',
+    'Coordinator, Smart Manufacturing Club, NVCTI, IIT (ISM) Dhanbad.',
+    'President, Amber Hostel, IIT (ISM) Dhanbad.',
+    'Kartavya NGO: tutored physics and mathematics to underprivileged children.',
+    'Mentored a 2nd-ranked participant in JHIC organized by IIT (ISM) Dhanbad.'
+  ]
+};
